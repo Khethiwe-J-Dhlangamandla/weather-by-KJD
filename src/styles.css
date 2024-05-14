@@ -1,7 +1,11 @@
 body {
-  background: #8dc6ff;
+  background: #e3f6f5;
 }
 
 .weather-info {
-  background: #e4f1fe;
+  background: #aeccc6;
+  padding: 30px;
+  max-width: 600px;
+  margin: 50px auto;
+  border-radius: 20px;
 }
