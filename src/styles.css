@@ -1,10 +1,34 @@
 body {
-  background: #e3f6f5;
+  background: #e7eaf6;
   font-family: "Josefin Slab", serif;
 }
 
+header {
+  border-bottom: 1px solid #e7eaf6;
+  padding: 0 0 25px 0;
+}
+
+a {
+  color: #0c182a;
+}
+
+footer {
+  border-top: 1px solid #e7eaf6;
+  padding: 25px 0 0 0;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.weather-app-city {
+  text-align: center;
+  font-size: 50px;
+  line-height: 60px;
+}
+
 .weather-info {
-  background: #c4dce0;
+  background: #a2a8d3;
   padding: 30px;
   max-width: 400px;
   margin: 50px auto;
@@ -13,8 +37,35 @@ body {
 }
 
 .current-weather-temp {
+  display: flex;
+  justify-content: center;
   font-size: 60px;
 }
 
 .search-form-input {
+  border: none;
+  width: 75%;
+  background: #e7eaf6;
+  border-radius: 5px;
+  padding: 15px 20px;
+  font-size: 15px;
+}
+
+.search-form-button {
+  width: 20%;
+  background: #38598b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 20px;
+}
+
+.weather-details {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+.weather-details strong {
+  color: #f65282;
 }
