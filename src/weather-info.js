@@ -59,3 +59,4 @@ let searchForm = document.querySelector("#search-form"); //gets the search engin
 searchForm.addEventListener("submit", submitSearchInformation);
 
 //used seperate functions so that they will be able to do one action at a time(and do it well) but they work together
+searchCity("Durban"); //set as default
