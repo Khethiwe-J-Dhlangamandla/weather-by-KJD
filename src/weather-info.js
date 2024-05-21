@@ -10,6 +10,11 @@ function showWeather(response) {
   let dayElement = document.querySelector("#day");
   let date = new Date(response.data.time * 1000);
 
+  let icon = document.querySelector("#weather-icon");
+
+  icon.innerHTML = `<img src="${response.data.condition.icon_url}"
+              class="weather-emoji" />`;
+
   newCity.innerHTML = response.data.city;
   //dayElement.innerHTML = formatDate(date);
   timeElement.innerHTML = formatDate(date);
