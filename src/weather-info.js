@@ -22,6 +22,8 @@ function showWeather(response) {
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   windspeedElement.innerHTML = `${response.data.wind.speed}km/h`;
   temperatureElement.innerHTML = Math.round(currentTemp);
+
+  getForecast(response.data.city); //call the forecast function here so that it will get the correct city spelling
 }
 
 function formatDate(date) {
@@ -60,7 +62,16 @@ function submitSearchInformation(event) {
   searchCity(searchInput.value); //user searches on web for city,value will go to searchCityFunction
 }
 
-function displayForecast() {
+function getForecast(city) {
+  let apiKey = "taa4b4dc4dfdof46c00d6401f73a1f23";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metrics`;
+
+  axios(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
+  console.log(response.data);
+
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Thurs", "Fri", "Sat", "Sun", "Mon", "Tues"];
@@ -89,4 +100,3 @@ searchForm.addEventListener("submit", submitSearchInformation);
 
 //used seperate functions so that they will be able to do one action at a time(and do it well) but they work together
 searchCity("Durban"); //set as default
-displayForecast();
