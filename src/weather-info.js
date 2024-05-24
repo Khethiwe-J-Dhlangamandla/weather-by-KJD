@@ -60,8 +60,33 @@ function submitSearchInformation(event) {
   searchCity(searchInput.value); //user searches on web for city,value will go to searchCityFunction
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Thurs", "Fri", "Sat", "Sun", "Mon", "Tues"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `<div class="row">
+            <div class="col-2">
+              <div class="weather-forecast-day">${day}</div>
+              <br />
+              <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-night.png" width="59" class="forecast-icon"/>
+              <br />
+              <div class="forecast-temp"> <span class="forecast-temp-max"><strong>26&deg;</strong></span>  <span class="forecast-temp-min">17&deg;</span></div>
+            </div>
+          </div>
+`;
+  });
+
+  forecastElement.innerHTML = forecastHtml;
+}
+
 let searchForm = document.querySelector("#search-form"); //gets the search engine or form to be used
 searchForm.addEventListener("submit", submitSearchInformation);
 
 //used seperate functions so that they will be able to do one action at a time(and do it well) but they work together
 searchCity("Durban"); //set as default
+displayForecast();

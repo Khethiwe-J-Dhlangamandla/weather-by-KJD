@@ -24,7 +24,7 @@ footer {
 .weather-app-city {
   text-align: center;
   font-size: 50px;
-  line-height: 60px;
+  line-height: 45px;
 }
 
 .weather-emoji {
@@ -51,6 +51,7 @@ footer {
   display: flex;
   justify-content: center;
   font-size: 60px;
+  margin-bottom: -20px;
 }
 
 .search-form-input {
@@ -74,9 +75,29 @@ footer {
 .weather-details {
   font-size: 20px;
   font-weight: 500;
-  line-height: 26px;
+  line-height: 14px;
 }
 
 .weather-details strong {
   color: #f65282;
+}
+
+.weather-forecast {
+  margin-top: 35px;
+  margin-bottom: 35px;
+  text-align: center;
+  display: flex;
+}
+
+.weather-forecast-day {
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+.forecast-temp-min {
+  opacity: 0.6;
+}
+
+.forecast-icon {
+  margin-top: -20px;
 }
