@@ -62,9 +62,16 @@ function submitSearchInformation(event) {
   searchCity(searchInput.value); //user searches on web for city,value will go to searchCityFunction
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
 function getForecast(city) {
   let apiKey = "taa4b4dc4dfdof46c00d6401f73a1f23";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metrics`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
 
   axios(apiUrl).then(displayForecast);
 }
@@ -74,22 +81,29 @@ function displayForecast(response) {
 
   let forecastElement = document.querySelector("#forecast");
 
-  let days = ["Thurs", "Fri", "Sat", "Sun", "Mon", "Tues"];
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `<div class="row">
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `<div class="row">
             <div class="col-2">
-              <div class="weather-forecast-day">${day}</div>
+              <div class="weather-forecast-day">${formatDay(day.time)}</div>
               <br />
-              <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-night.png" width="59" class="forecast-icon"/>
+              <img src="${
+                day.condition.icon_url
+              }" width="59" class="forecast-icon"/>
               <br />
-              <div class="forecast-temp"> <span class="forecast-temp-max"><strong>26&deg;</strong></span>  <span class="forecast-temp-min">17&deg;</span></div>
+              <div class="forecast-temp"> <span class="forecast-temp-max"><strong>${Math.round(
+                day.temperature.maximum
+              )}&deg;</strong></span>  <span class="forecast-temp-min">${Math.round(
+          day.temperature.minimum
+        )}&deg;</span></div>
             </div>
           </div>
 `;
+    }
   });
 
   forecastElement.innerHTML = forecastHtml;
